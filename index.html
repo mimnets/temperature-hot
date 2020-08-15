@@ -29,10 +29,10 @@
             </div>
         </form>
         <div class="weather-status text-white text-center">
-            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <img id="icon-url" src="https://openweathermap.org/img/wn/09d@2x.png" alt="">
             <h1 id="city-name">Dhaka</h1>
             <h3><span id="weather-status">38.06</span>&deg;C</h3>
-            <h1 class="lead">Clouds</h1>
+            <h1 id="weather-main" class="lead">Clouds</h1>
         </div>
     </div>
     <script>
@@ -49,10 +49,20 @@
             const cityName = data.name;
             const weatherCelcius = data.main.temp-272.15;
             const weatherStatus = weatherCelcius.toFixed(2);
+            const weatherIcon =  data.weather[0].icon;
+            const weatherMain = data.weather[0].main;
+            const iconUrl = `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+            // console.log(iconUrl);
+
+            // console.log(weatherIcon);
+            // console.log(weatherMain);
             // console.log(weatherStatus);
             // console.log(cityName);
             document.getElementById('city-name').innerText = cityName;
             document.getElementById('weather-status').innerText = weatherStatus;
+            document.getElementById('weather-main').innerText = weatherMain;
+            document.getElementById('icon-url').src = iconUrl;
+
         })
     })
     </script>
