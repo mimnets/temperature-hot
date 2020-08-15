@@ -31,7 +31,7 @@
         <div class="weather-status text-white text-center">
             <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
             <h1 id="city-name">Dhaka</h1>
-            <h3><span>38.06</span>&deg;C</h3>
+            <h3><span id="weather-status">38.06</span>&deg;C</h3>
             <h1 class="lead">Clouds</h1>
         </div>
     </div>
@@ -47,10 +47,14 @@
             .then(data => {
             console.log(data);
             const cityName = data.name;
+            const weatherCelcius = data.main.temp-272.15;
+            const weatherStatus = weatherCelcius.toFixed(2);
+            // console.log(weatherStatus);
             // console.log(cityName);
-            const weatherCityName = document.getElementById('city-name').innerText = cityName;
+            document.getElementById('city-name').innerText = cityName;
+            document.getElementById('weather-status').innerText = weatherStatus;
         })
-            })
+    })
     </script>
 </body>
 
